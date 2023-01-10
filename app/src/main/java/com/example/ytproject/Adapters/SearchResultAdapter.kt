@@ -1,6 +1,7 @@
 package com.example.ytproject.Adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.example.ytproject.Activitys.VideoPlayerActivity
 import com.example.ytproject.Model.SearchModel.Content
 import com.example.ytproject.R
 
@@ -49,6 +51,10 @@ class SearchResultAdapter(data: List<Content>?) :
             }
 
         })
+
+        holder.imgThumbnail.setOnClickListener {
+            context.startActivity(Intent(context, VideoPlayerActivity::class.java).putExtra("videoId",video?.videoId))
+        }
     }
 
     override fun getItemCount(): Int {
